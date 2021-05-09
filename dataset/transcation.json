@@ -1,0 +1,49 @@
+{
+	"name": "transcation",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Blob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "transcation.csv",
+				"folderPath": "Inbound",
+				"container": "playground"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Transaction_ID",
+				"type": "String"
+			},
+			{
+				"name": "Prop_1",
+				"type": "String"
+			},
+			{
+				"name": "Transcation_Date",
+				"type": "String"
+			},
+			{
+				"name": "Client_name",
+				"type": "String"
+			},
+			{
+				"name": "Transcation_type",
+				"type": "String"
+			},
+			{
+				"name": "Transcation_amount",
+				"type": "String"
+			}
+		]
+	}
+}
