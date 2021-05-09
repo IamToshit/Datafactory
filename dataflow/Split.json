@@ -12,13 +12,21 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "OutputDataset",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "ConditionalSplit1"
 				}
 			],
-			"script": "source(output(\n\t\tTransaction_ID as string,\n\t\tProp_1 as string,\n\t\tTranscation_Date as string,\n\t\tClient_name as string,\n\t\tTranscation_type as string,\n\t\tTranscation_amount as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 split(Transcation_type == 'Deposit',\n\tdisjoint: true) ~> ConditionalSplit1@(First)"
+			"script": "source(output(\n\t\tTransaction_ID as string,\n\t\tProp_1 as string,\n\t\tTranscation_Date as string,\n\t\tClient_name as string,\n\t\tTranscation_type as string,\n\t\tTranscation_amount as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 split(Transcation_type == 'Deposit',\n\tdisjoint: true) ~> ConditionalSplit1@(First)\nConditionalSplit1@First sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
 		}
 	}
 }
