@@ -1,0 +1,9 @@
+{
+	"name": "DF-PRAVEEN-DEV",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "456312c8-770b-4571-a407-e1e0d305441b",
+		"tenantId": "54d25f17-0c4b-4213-b56d-4b8c1d7b6820"
+	}
+}
